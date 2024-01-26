@@ -1,7 +1,18 @@
-import React from 'react'
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import Transaction from '../layouts/Transaction'
 
 const Transactions = () => {
+
+  const token = useSelector((state) => state.auth.token);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) {
+      navigate('/') 
+    }
+  }, [token, navigate])
 
   const transactions = {
     display:"flex",

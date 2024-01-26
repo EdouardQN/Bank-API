@@ -1,49 +1,65 @@
-import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../actions/authActions';
+import { profileReset } from '../actions/userActions';
 
 import logo from '../designs/img/argentBankLogo.png'
 
 const Header = () => {
+
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    dispatch(profileReset());
+    
+  }
+
   return (
     <>
-      {/* DISCONNECTED USER */}
+      {token ?  
+      
       <nav className="main-nav">
-          <NavLink className="main-nav-logo" to="/">
-              <img
-                className="main-nav-logo-image"
-                src={logo}
-                alt="Argent Bank Logo"
-              />
-              <h1 className="sr-only">Argent Bank</h1>
+        <NavLink className="main-nav-logo" to="/">
+          <img
+            className="main-nav-logo-image"
+            src={logo}
+            alt="Argent Bank Logo"
+          />
+          <h1 className="sr-only">Argent Bank</h1>
+        </NavLink>
+        <div>
+          <NavLink className="main-nav-item" to="/profile">
+            <i className="fa fa-user-circle"></i>
+            Tony
           </NavLink>
-          <div>
-            <NavLink className="main-nav-item" to="/signin">
-              <i className="fa fa-user-circle"></i>
-              Sign In
-            </NavLink>
-          </div>
+          <NavLink onClick={handleLogout} to="/" className="main-nav-item" >
+            <i className="fa fa-sign-out"></i>
+            Sign Out
+          </NavLink>
+        </div>
+      </nav> 
+
+      :
+
+      <nav className="main-nav">
+        <NavLink className="main-nav-logo" to="/">
+            <img
+              className="main-nav-logo-image"
+              src={logo}
+              alt="Argent Bank Logo"
+            />
+            <h1 className="sr-only">Argent Bank</h1>
+        </NavLink>
+        <div>
+          <NavLink className="main-nav-item" to="/signin">
+            <i className="fa fa-user-circle"></i>
+            Sign In
+          </NavLink>
+        </div>
       </nav>
-      {/* CONNECTED USER */}
-      {/* <nav class="main-nav">
-      <a class="main-nav-logo" href="./index.html">
-        <img
-          class="main-nav-logo-image"
-          src="./img/argentBankLogo.png"
-          alt="Argent Bank Logo"
-        />
-        <h1 class="sr-only">Argent Bank</h1>
-      </a>
-      <div>
-        <a class="main-nav-item" href="./user.html">
-          <i class="fa fa-user-circle"></i>
-          Tony
-        </a>
-        <a class="main-nav-item" href="./index.html">
-          <i class="fa fa-sign-out"></i>
-          Sign Out
-        </a>
-      </div>
-    </nav> */}
+      }     
     </>
   )
 }
