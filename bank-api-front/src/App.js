@@ -2,13 +2,9 @@ import React from 'react';
 import {
   createBrowserRouter,
   createRoutesFromElements,
-  redirect,
   Route,
   RouterProvider,
 } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import './designs/css/main.css'
-
 // Components
 import Home from './pages/Home';
 import SignIn from './pages/SignIn';
@@ -18,7 +14,6 @@ import Erreur404 from './pages/Erreur404';
 import Root from './layouts/Root';
 
 function App() {
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -29,8 +24,8 @@ function App() {
         <Route path='/signin' element={<SignIn />} />
 
         {/* PRIVATE ROUTES */}
-        { isAuthenticated && <Route token  path='/profile' element={<Profile />} />} 
-        { isAuthenticated && <Route path='/profile/transactions' element={<Transactions />} />}
+        <Route token  path='/profile' element={<Profile />} />
+        <Route path='/profile/transactions' element={<Transactions />} />
           
         {/* HANDLING WRONG ROUTES */}
         <Route path="*" element={<Erreur404 />} />

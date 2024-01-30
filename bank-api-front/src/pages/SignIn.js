@@ -4,7 +4,6 @@ import { login } from '../actions/authActions';
 import { userProfile } from '../actions/userActions';
 import { useNavigate } from 'react-router-dom';
 
-
 const SignIn = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -14,7 +13,6 @@ const SignIn = () => {
   const { error } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   
-
   const handleUserConnection = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
@@ -48,11 +46,11 @@ const SignIn = () => {
             <button className="sign-in-button">Sign In</button>           
           </form>
           {error && (
-          <div>
-            <br />
-            {error}
-          </div>
-        )}
+            <div>
+              <br />
+              {error}
+            </div>
+          )}
         </section>
       </main>
     </>

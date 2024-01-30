@@ -14,10 +14,13 @@ const Transaction = () => {
 
   return (
     <div className='transaction-dropdown'>
-      {/* src à changer quand ce sera un composant */}
       <div className='transaction-dropdown-header'>
-        <img className= {iconReversed ? 'transaction-dropdown-icon icon-reverse' : 'transaction-dropdown-icon' }
-         src={arrowDown} alt='dropdown icon' onClick={toggleDescription}/>
+        <img 
+          className= {iconReversed ? 'transaction-dropdown-icon icon-reverse' : 'transaction-dropdown-icon' }
+          src={arrowDown} 
+          alt='dropdown icon' 
+          onClick={toggleDescription}
+        />
         <p>June 20th, 2020</p>
         <p>Golden Sun Bakery</p>
         <p>$5.00</p>

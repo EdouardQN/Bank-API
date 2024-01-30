@@ -1,3 +1,17 @@
+.transactions{
+  display:"flex";
+  flex-direction:"column";
+  justify-content:"center";
+  align-items:"center";
+  background-color:"white";
+  margin-top:"-4px";
+}
+
+.transactions-amount{
+  margin: 0;
+  font-size:54px;
+}
+
 .transaction{
   width: 85%;
   margin: 1% auto;

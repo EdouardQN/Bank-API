@@ -14,28 +14,13 @@ const Transactions = () => {
     }
   }, [token, navigate])
 
-  const transactions = {
-    display:"flex",
-    flexDirection:"column",
-    justifyContent:"center",
-    alignItems:"center",
-    backgroundColor:"white",
-    marginTop:"-4px",
-  }
-  
-  const amount = {
-    margin:"0",
-    fontSize:"54px"
-  }
-
   return (
     <main className='main'>
-      <div style={transactions}>
+      <div className='transactions'>
         <span>Argent Bank Checking</span>
-        <h2 style={amount}>$2,082.79</h2>
+        <h2 className='transactions-amount'>$2,082.79</h2>
         <span>Available Balance</span>  
       </div>
-
       <div className='transaction'>
         <div className='transaction-columns'>
           <span>DATE</span>
@@ -49,8 +34,6 @@ const Transactions = () => {
         <Transaction />
         <Transaction />
         <Transaction />
-
-        
       </div>
     </main>
   )
