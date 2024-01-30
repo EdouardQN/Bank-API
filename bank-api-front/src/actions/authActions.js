@@ -33,7 +33,10 @@ export const login = (email, password) => async (dispatch) => {
     // Dispatch d'une action d'échec si la connexion échoue
     dispatch({
       type: LOGIN_FAILURE,
-      payload: { error: error.message },
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
     });
   }
 };
