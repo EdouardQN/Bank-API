@@ -13,6 +13,7 @@ const Transaction = () => {
   }
 
   return (
+    // voir responsive mobile
     <div className='transaction-dropdown'>
       <div className='transaction-dropdown-header'>
         <img 
